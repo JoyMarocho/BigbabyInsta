@@ -19,3 +19,41 @@ class Photo(models.Model):
 
     def delete_photo(self):
         self.delete()
+    
+    
+    @classmethod
+    def search_by_category(cls,search_term):
+        photo = cls.objects.filter(category__icontains=search_term)
+        return photo
+
+    @classmethod
+    def get_photo_by_id(cls,photo_id):
+        photo_result = cls.objects.filter(id=photo_id)
+        return photo_result
+
+    @classmethod
+    def update_image(cls,current_value,new_value):
+        fetched_object = Photo.objects.filter(photo_name = current_value).update(photo_name = new_value)
+        return fetched_object
+
+    @classmethod
+    def filter_by_location(cls,location):
+        filtered_result = cls.objects.filter(photo_location__location_name__icontains = location)
+        return filtered_result
+
+    class Meta:
+        ordering = ['photo_name']
+    
+    class Category(models.Model):
+        category_name = models.CharField(max_length= 35)
+
+    def __str__(self):
+        return self.category_name
+
+    def save_category(self):
+        self.save()
+
+    @classmethod
+    def update_category(cls,current_value,new_value):
+        fetched_category = Category.objects.filter(category_name = current_value).update(category_name = new_value)
+        return fetched_category
