@@ -32,7 +32,7 @@ As a user of the application you will be able to:
 ### Installation and setup instructions
 1. Clone this repo: git clone https://github.com/denn-is-njeruh/Instaclone.git
 2. The repo comes in a zipped or compressed format. Extract to your prefered location and open it.
-3. open your terminal and navigate to gallery then create a virtual environment.For detailed guide refer  [here](https://realpython.com/pipenv-guide/)
+3. open your terminal and navigate to BigbabyInsta then create a virtual environment.For detailed guide refer  [here](https://realpython.com/pipenv-guide/)
 3. To run the app, you'll have to run the following commands in your terminal
 
         pipenv install -r requirements.txt
