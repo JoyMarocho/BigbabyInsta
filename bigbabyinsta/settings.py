@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from os import environ
-import dj_database_url as db_url
 from pathlib import Path
 from decouple import config,Csv
+import dj_database_url as db_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,7 +33,7 @@ SECRET_KEY = 'k*c%=+fj0@%$0waan0d=2^&pw(rtu8xz(wm1pcg971!0em1!6@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS')
 
 
 # Application definition
