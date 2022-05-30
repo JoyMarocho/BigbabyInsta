@@ -1,4 +1,14 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect,get_object_or_404
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from .forms import NewUserForm,CommentForm,UploadImageForm,ProfileEditForm
+from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import Image
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -36,21 +46,21 @@ def register_new_user(request):
 
 def login_user(request):
         if request.method == 'POST':
-    form = AuthenticationForm(request, data=request.POST)
-    if form.is_valid():
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(username=username,password=password)
-    if user is not None:
-        login(request, user)
-        messages.info(request, f"You are now logged in as {username}.")
+            form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username,password=password)
+        if user is not None:
+            login(request, user)
+            messages.info(request, f"You are now logged in as {username}.")
         return redirect('index')
         else:
-        messages.error(request, f'Invalid Username or password')
-    else:
+            messages.error(request, f'Invalid Username or password')
+            else:
         messages.error(request, f'Invalid username or password')
-    form = AuthenticationForm()
-    return render(request, 'registration/login.html', {"login_form": form})
+        form = AuthenticationForm()
+        return render(request, 'registration/login.html', {"login_form": form})
 
 def logout_user(request):
     logout(request)
@@ -82,3 +92,28 @@ def logout_user(request):
 #         form.instance.user = self.request.user
 #         return super().form_valid(form)
 
+class ImageCreateView(LoginRequiredMixin,CreateView):
+        form_class = UploadImageForm
+        template_name = 'new_image.html'
+
+def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+    
+
+class ImageDetailView(DetailView):
+    model = Image
+    template_name = 'image_detail.html'
+
+
+class ImageListView(ListView):
+    model = Image
+    template_name = 'image_list.html'
+
+class CommentCreateView(LoginRequiredMixin,CreateView):
+    form_class = CommentForm
+    template_name = 'new_comment.html'
+
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
