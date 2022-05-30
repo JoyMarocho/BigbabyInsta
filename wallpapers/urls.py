@@ -1,8 +1,10 @@
-from django.urls import re_path as url, include
+from django.conf.urls import url
 from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
-        url(r'^$', views.all_wallpapers, name='wallpapers'),
+    url(r'^$', views.all_wallpapers, name='wallpapers'),
     url(r'^wallpaper/(?P<id>\d+)', views.wallpaper, name='wallpaper'),
     # url(r'^sports/'$, views.sport_wallpaper, name='sportWallpapers'),
     
