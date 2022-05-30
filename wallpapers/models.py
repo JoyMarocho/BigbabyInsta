@@ -57,3 +57,25 @@ class Photo(models.Model):
     def update_category(cls,current_value,new_value):
         fetched_category = Category.objects.filter(category_name = current_value).update(category_name = new_value)
         return fetched_category
+    
+class City(models.Model):
+    name = models.CharField(max_length=50)
+
+
+    def __str__(self):
+        return self.name
+
+    def save_city(self):
+        self.save()
+
+@classmethod
+def update_city(cls,current_value,new_value):
+    fetched_city = City.objects.filter(name = current_value).update(name = new_value)
+    return fetched_city
+
+
+class Tag(models.Model):
+    tag_name = models.CharField(max_length= 40)
+
+    def __str__(self):
+        return self.tag_name
