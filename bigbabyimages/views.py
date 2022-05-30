@@ -57,3 +57,27 @@ def logout_user(request):
     messages.info(request, f'You have successfully logged out.')
     return redirect('index')
 
+@login_required(login_url='/login')
+def new_image(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.username = current_user
+            image.save()
+        return redirect('index')
+    else:
+        form = UploadImageForm
+    return render(request, 'new_image.html', {"image_form": form})
+
+
+class CommentCreateView(LoginRequiredMixin,CreateView):
+        model = Comment
+        fields = ['comment']
+        template_name = 'phiimages/index.html'
+
+
+def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
