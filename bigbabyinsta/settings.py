@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     
     'bigbabyimages.apps.BigbabyimagesConfig',
     'cloudinary',
-    'bootstrap5',
+    'bootstrap4',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR,'static')
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
