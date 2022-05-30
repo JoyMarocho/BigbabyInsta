@@ -17,44 +17,42 @@
 + [Licence](#licence)
 
 ## Description
-This is a clone application of the photo-website Instagram
+This application depicts a personal gallery where the admin can post photos and users  get to view them. Users can expand the images by clicking on them, know the shooting location, copy and share a link to the image, and search for images.
 
 ## Features
 As a user of the application you will be able to:
-1. Register and sign in to start using the application.
-2. Upload pictures on the application.
-3. View your profile with all the photos.
-4. Follow other users and see their pictures on your timeline.
-5. Like a picture and leave comments on it.
+1. View different photos that interest you.
+2. Click on a single photo to expand it and also view the details of the photo. The photo details will appear on a modal within the same route as the main page.
+3. Search for different categories of photos. (ie. Movie, Sports, Nature)
+4. Click on share icon to share the image with any of your social account or alternatively Copy a link to the photo and share with your friends.
+5. View photos based on the location they were taken or category.
+
 
 [Go Back to the top](#BigbabyInsta)
 
-### Installation and setup instructions
-1. Clone this repo: git clone https://github.com/denn-is-njeruh/Instaclone.git
+1. Clone this repo: git clone https://github.com/JoyMarocho/BigbabyInsta.git
 2. The repo comes in a zipped or compressed format. Extract to your prefered location and open it.
-3. open your terminal and navigate to BigbabyInsta then create a virtual environment.For detailed guide refer  [here](https://realpython.com/pipenv-guide/)
+3. open your terminal and navigate to gallery then create a virtual environment.For detailed guide refer  [here](https://realpython.com/pipenv-guide/)
 3. To run the app, you'll have to run the following commands in your terminal
 
-        pipenv install -r requirements.txt
-
+        pip install -r requirements.txt
 4. On your terminal,Create database gallery using the command below.
 
         CREATE DATABASE gallery;
-
 5. Migrate the database using the command below
 
-        make migrate
-
+        python3.6 manage.py migrate
 6. Then serve the app, so that the app will be available on localhost:8000, to do this run the command below
 
-        make serve
+        python manage.py runserver
 7. Use the navigation bar/navbar/navigation pane/menu to navigate and explore the app.
 
 
 ## Running the tests
 Use the command given below to run automated tests.
 
-        make test gallery
+        python manage.py test gallery
+
 
 
 ## Technologies Used

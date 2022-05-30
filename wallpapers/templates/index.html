@@ -1,0 +1,23 @@
+    {% extends 'all_wallpapers/base.html' %}
+
+    {% block content %}
+
+    <div class="container">
+    <div class="row">
+        {% for wallpaper in wallpapers %}
+        <div class="col-md-4">
+            <div class="card my-2">
+            <img src="{{ wallpaper.image.url }}" class="img-thumbnail" alt="">
+            <div class="card-body bg-dark">
+                <h3 class="text-center text-light">{{wallpaper.photo_name}}</h3>
+                <div>
+                <button class="btn btn-link" type="button"><a href="{% url 'wallpaper' wallpaper.id %}"> View Here </a></button>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+    </div>
+
+    {% endblock %}
