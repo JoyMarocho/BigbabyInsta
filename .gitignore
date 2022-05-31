@@ -1,0 +1,8 @@
+env/
+.vscode/
+.env
+.idea/
+Makefile
+__pycache__/
+*.pyc
+unused.html

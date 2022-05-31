@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-# import dj_database_url
 from os import environ
 from pathlib import Path
 
@@ -44,9 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     
-    'wallpapers.apps.WallpapersConfig',
+    'pictures.apps.PicturesConfig',
     'bootstrap4',
-    'cloudinary',
 ]
 
 
@@ -139,8 +137,6 @@ if DEBUG:
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR,'static')
     ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -153,6 +149,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-APPEND_SLASH = False
-
-CLOUDINARY_URL = environ.get('CLOUDINARY_URL')
