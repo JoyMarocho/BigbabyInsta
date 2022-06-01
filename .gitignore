@@ -1,8 +1,8 @@
-env/
-.vscode/
 .env
-.idea/
-Makefile
-__pycache__/
+virtual
+__pycache__
 *.pyc
-unused.html
+.idea
+.vscode
+db.sqlite
+Makefile

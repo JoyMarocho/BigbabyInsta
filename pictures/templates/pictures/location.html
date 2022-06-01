@@ -1,7 +1,7 @@
     {% extends 'base.html' %}
     {% block content %}
     <div class="container">
-        <h2> Gallery </h2>
+        <h2> BigbabyInsta </h2>
         <hr>
 
         {% if location_images %}
@@ -30,7 +30,7 @@
                         <div class="modal-footer">
                             <input class="form-control input-lg" type="text"
                                 value="{{image.image.url}}" id="{{image.id}}.url">
-                            <button class="btn btn-success btn-sm" onclick="copyLink('{{image.id}}.url')">Copy</button>
+                            <button class="btn btn-success btn-sm" onclick="copyLink('{{image.id}}.url')"> Copy</button>
                             <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
                             </button>
                         </div>
